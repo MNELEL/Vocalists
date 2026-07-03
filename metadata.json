@@ -1,0 +1,10 @@
+{
+  "name": "Remix: Vocalis",
+  "description": "A sophisticated AI voice cloning and audio synthesis studio with real-time waveform analysis, performance monitoring, and local storage management.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
