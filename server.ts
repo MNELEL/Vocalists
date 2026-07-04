@@ -90,6 +90,10 @@ async function startServer() {
         return res.status(400).json({ error: "voiceId is required" });
       }
 
+      if (typeof voiceId !== "string" || !/^[A-Za-z0-9_-]{1,64}$/.test(voiceId)) {
+        return res.status(400).json({ error: "voiceId format is invalid" });
+      }
+
       if (!text) {
         return res.status(400).json({ error: "text is required" });
       }
@@ -98,7 +102,7 @@ async function startServer() {
       const stability = params?.stability ? (params.stability / 100) : 0.71;
       const similarity_boost = params?.accentIntensity ? (params.accentIntensity / 100) : 0.75;
       
-      const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+      const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${encodeURIComponent(voiceId)}`, {
         method: "POST",
         headers: {
           "xi-api-key": apiKey,
